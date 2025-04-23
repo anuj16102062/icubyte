@@ -12,4 +12,9 @@ def add(numbers: str) -> int:
 
     split_numbers = re.split(delimiter, numbers)
     num_list = [int(num) for num in split_numbers if num]
+    negatives = [num for num in num_list if num < 0]
+
+    if negatives:
+        negatives_str = ",".join(map(str, negatives))
+        raise ValueError(f"negative numbers not allowed {negatives_str}")
     return sum(num_list)
